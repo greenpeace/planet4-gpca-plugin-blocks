@@ -1,0 +1,106 @@
+.wp-block-cards-block-card {
+	display: inline-block;
+	vertical-align: text-top;
+}
+
+.aCard {
+	margin: 0.3rem;
+	width: 300px;
+	background: rgba(255, 255, 255, 0.95);
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 3px 3px 10px 0 rgba(50, 50, 50, 0.41);
+
+	.card-image {
+		display: inline-block;
+		width: 300px;
+		overflow: hidden;
+		text-align: center;
+
+		img {
+			width: 300px;
+
+			&.clickable {
+				cursor: pointer;
+			}
+		}
+	}
+
+	.card-event-date {
+		display: block;
+		font-size: smaller;
+		padding: 0 0.5rem 0;
+		margin: 0;
+	}
+
+	.card-title {
+		font-size: larger;
+		margin: 0;
+		padding: 0 0.5rem;
+		display: inline-block;
+
+		a,
+		a:visited {
+			color: inherit;
+		}
+	}
+
+	.card-desc {
+		margin: 0;
+		padding: 0.3rem 0.5rem;
+	}
+
+	.card-event-location {
+		display: block;
+		margin: 0 0.5rem 0.5rem 0.5rem;
+		padding: 0.3rem;
+		font-weight: 700;
+	}
+}
+
+.cards-list-search-results {
+	box-shadow: 0 0 10px 0 rgba(50, 50, 50, 0.41);
+
+	.aCard {
+		margin: 0;
+		position: relative;
+		width: 100%;
+		border-radius: 0;
+		box-shadow: none;
+		overflow: hidden;
+		border: 1px solid rgba(0, 0, 0, 0.8);
+
+		.card-image {
+			display: inline-block;
+			width: 100px;
+			vertical-align: middle;
+			background: rgba(0, 0, 0, 0.8);
+			float: left;
+			margin: 0 0.3em 0 0;
+
+			img {
+				width: 100px;
+			}
+		}
+
+		.card-title,
+		.card-desc,
+		.card-event-location,
+		.card-event-date {
+			display: inline-block;
+			width: auto;
+			font-size: 0.9rem;
+			padding: 0.3rem;
+			margin: 0;
+			line-height: 1;
+		}
+
+		.card-desc {
+			display: inline;
+		}
+
+		.card-event-location {
+			border: 1px dotted #1e1e1e;
+		}
+	}
+}

@@ -1,0 +1,59 @@
+.card-settings input,
+.card-editor input,
+.card-title,
+.card-desc textarea {
+	width: 100%;
+}
+
+.card-editor {
+	float: left;
+
+	label {
+		display: block;
+	}
+
+	input,
+	textarea {
+		width: 100%;
+	}
+
+	.card-title {
+		text-decoration: underline;
+
+		.card-url {
+			display: none;
+		}
+	}
+}
+
+.card-settings {
+
+	.card-settings-link {
+		transition: background-color 0.4s linear;
+
+		&.warn {
+			background-color: #ff0;
+		}
+	}
+
+	.card-image {
+		position: relative;
+		display: inline-block;
+		width: 300px;
+		max-width: 100%;
+		overflow: hidden;
+		text-align: center;
+
+		img {
+			width: 100%;
+
+			&.clickable {
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+.tab-panel {
+	position: relative;
+}

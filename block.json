@@ -1,0 +1,15 @@
+{
+	"apiVersion": 2,
+	"name": "cards-block/card",
+	"title": "Card",
+	"category": "text",
+	"icon": "admin-links",
+	"description": "Cards with clickable title, description, image, and more",
+	"textdomain": "cards",
+	"supports": {
+		"html": false
+	},
+	"editorScript": "file:./build/index.js",
+	"editorStyle": "file:./build/index.css",
+	"style": "file:./build/style-index.css"
+}
