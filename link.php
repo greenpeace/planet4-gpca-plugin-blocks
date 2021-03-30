@@ -63,6 +63,13 @@ function cards_block_cards_block_init() {
 }
 add_action( 'init', 'cards_block_cards_block_init' );
 
+function p4_child_theme_gpca_whitelist_blocks( $allowed_blocks, $post ) {
+	array_push($allowed_blocks, 'cards-block/card', 'cards-block/category', 'cards-block/list');
+	return $allowed_blocks;
+}
+
+add_filter('allowed_block_types', 'p4_child_theme_gpca_whitelist_blocks', 10, 2);
+
 function categoryScript () {
 	if (!is_admin()) {
 	  wp_enqueue_script( 'collapseCategories',  plugins_url( '/client/collapseCategories.js' , __FILE__ ) );
