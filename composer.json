@@ -1,5 +1,5 @@
 {
-  "name": "shawninder/planet4-gpca-plugin-blocks",
+  "name": "greenpeace/planet4-gpca-plugin-blocks",
   "description": "Provides Planet4 content blocks specific to Greenpeace Canada",
   "type": "wordpress-plugin",
   "license": "GPL-3.0-or-later",
