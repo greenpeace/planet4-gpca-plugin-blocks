@@ -15,7 +15,7 @@ build/Release
 node_modules/
 
 # Generated files
-build/
+# build/
 
 # Optional npm cache directory
 .npm
