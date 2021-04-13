@@ -68,7 +68,7 @@ function p4_child_theme_gpca_whitelist_blocks( $allowed_blocks, $post ) {
 	return $allowed_blocks;
 }
 
-add_filter('allowed_block_types', 'p4_child_theme_gpca_whitelist_blocks', 10, 2);
+add_filter('allowed_block_types', 'p4_child_theme_gpca_whitelist_blocks', 11, 2);
 
 function categoryScript () {
 	if (!is_admin()) {
