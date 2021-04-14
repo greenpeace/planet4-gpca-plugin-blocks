@@ -1,3 +1,189 @@
-.wp-block-cards-block-card{display:inline-block;vertical-align:text-top}.aCard{margin:.3rem;width:300px;background:rgba(255,255,255,.95);border-radius:10px;overflow:hidden;box-shadow:3px 3px 10px 0 rgba(50,50,50,.41)}.aCard .card-image{display:inline-block;width:300px;overflow:hidden;text-align:center}.aCard .card-image img{width:300px}.aCard .card-image img.clickable{cursor:pointer}.aCard .card-event-date{display:block;font-size:smaller;padding:0 .5rem 0;margin:0}.aCard .card-title{font-size:larger;margin:0;padding:0 .5rem;display:inline-block}.aCard .card-title a,.aCard .card-title a:visited{color:inherit}.aCard .card-desc{margin:0;padding:.3rem .5rem}.aCard .card-event-location{display:block;margin:0 .5rem .5rem .5rem;padding:.3rem;font-weight:700}.cards-list-search-results{box-shadow:0 0 10px 0 rgba(50,50,50,.41)}.cards-list-search-results .aCard{margin:0;position:relative;width:100%;border-radius:0;box-shadow:none;overflow:hidden;border:1px solid rgba(0,0,0,.8)}.cards-list-search-results .aCard .card-image{display:inline-block;width:100px;vertical-align:middle;background:rgba(0,0,0,.8);float:left;margin:0 .3em 0 0}.cards-list-search-results .aCard .card-image img{width:100px}.cards-list-search-results .aCard .card-title,.cards-list-search-results .aCard .card-desc,.cards-list-search-results .aCard .card-event-location,.cards-list-search-results .aCard .card-event-date{display:inline-block;width:auto;font-size:.9rem;padding:.3rem;margin:0;line-height:1}.cards-list-search-results .aCard .card-desc{display:inline}.cards-list-search-results .aCard .card-event-location{border:1px dotted #1e1e1e}
-.wp-block-cards-block-category .category-title{cursor:pointer;position:relative;width:100%;background-color:#074365;color:#fff;display:block;padding:16px 44px 16px 16px;border-radius:4px;font-weight:500;line-height:1;border:1px solid #074365}.wp-block-cards-block-category .category-title:hover{background-color:#05324c}.wp-block-cards-block-category .category-title::after{content:">";position:absolute;top:16px;right:16px;left:auto;pointer-events:none;display:inline-block;transition:transform .8s ease;transform-origin:center center;transform:rotate(90deg)}.wp-block-cards-block-category .category-title.opened::after{transform:rotate(-90deg)}.wp-block-cards-block-category .category-title a,.wp-block-cards-block-category .category-title a:visited{color:inherit}.wp-block-cards-block-category .cards-list-category-contents.is-hidden{display:none}
-.wp-block-cards-block-list{min-height:5rem}.wp-block-cards-block-list .cards-list-search{margin:.3em .3em 1.5rem}.wp-block-cards-block-list .cards-list-search.is-hidden{display:none}.wp-block-cards-block-list .cards-list-search .cards-list-search-controls .icon{display:inline-block;background:#fff;border-radius:1rem;width:2rem;height:2rem;line-height:2;vertical-align:middle;text-align:center}.wp-block-cards-block-list .cards-list-search .cards-list-search-controls .icon svg{width:1.5rem;height:1.5rem}.wp-block-cards-block-list .cards-list-search .cards-list-search-results{position:absolute;list-style:none;padding-left:0;z-index:5;display:none}.wp-block-cards-block-list .cards-list-search .cards-list-search-results.is-visible{display:block}.wp-block-cards-block-list .cards-list-search .cards-list-search-results>li{margin:0 auto}.wp-block-cards-block-list .cards-list-search .cards-list-search-results .search-result{margin:0;display:block;position:relative}.wp-block-cards-block-list .cards-list-search .cards-list-search-results .search-result figcaption{display:block;position:absolute;bottom:0;right:0;transform:translateY(5px);z-index:6;background-color:#074365;padding:.1rem .3rem;font-size:.6rem;margin:0}.wp-block-cards-block-list .cards-list-search .cards-list-search-results .search-result figcaption a{color:#fff}
+.wp-block-cards-block-card {
+  display: inline-block;
+  vertical-align: text-top;
+}
+
+.aCard {
+  margin: 0.3rem;
+  width: 300px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 3px 3px 10px 0 rgba(50, 50, 50, 0.41);
+}
+.aCard .card-image {
+  display: inline-block;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+}
+.aCard .card-image img {
+  width: 100%;
+}
+.aCard .card-image img.clickable {
+  cursor: pointer;
+}
+.aCard .card-event-date {
+  display: block;
+  font-size: smaller;
+  padding: 0 0.5rem 0;
+  margin: 0;
+}
+.aCard .card-title {
+  font-size: larger;
+  margin: 0;
+  padding: 0 0.5rem;
+  display: inline-block;
+}
+.aCard .card-title a,
+.aCard .card-title a:visited {
+  color: inherit;
+}
+.aCard .card-desc {
+  margin: 0;
+  padding: 0.3rem 0.5rem;
+}
+.aCard .card-event-location {
+  display: block;
+  margin: 0 0.5rem 0.5rem 0.5rem;
+  padding: 0.3rem;
+  font-weight: 700;
+}
+
+.cards-list-search-results {
+  width: 100%;
+  box-shadow: 0 0 10px 0 rgba(50, 50, 50, 0.41);
+}
+.cards-list-search-results .aCard {
+  margin: 0;
+  position: relative;
+  width: 100%;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+}
+.cards-list-search-results .aCard .card-image {
+  display: inline-block;
+  width: 100px;
+  vertical-align: middle;
+  background: rgba(0, 0, 0, 0.8);
+  float: left;
+  margin: 0 0.3em 0 0;
+}
+.cards-list-search-results .aCard .card-image img {
+  width: 100px;
+}
+.cards-list-search-results .aCard .card-title,
+.cards-list-search-results .aCard .card-desc,
+.cards-list-search-results .aCard .card-event-location,
+.cards-list-search-results .aCard .card-event-date {
+  display: inline-block;
+  width: auto;
+  font-size: 0.9rem;
+  padding: 0.3rem;
+  margin: 0;
+  line-height: 1;
+}
+.cards-list-search-results .aCard .card-desc {
+  display: inline;
+}
+.cards-list-search-results .aCard .card-event-location {
+  border: 1px dotted #1e1e1e;
+}
+.wp-block-cards-block-category .category-title {
+  cursor: pointer;
+  position: relative;
+  width: 100%;
+  background-color: #074365;
+  color: #fff;
+  display: block;
+  padding: 16px 44px 16px 16px;
+  border-radius: 4px;
+  font-weight: 500;
+  line-height: 1;
+  border: 1px solid #074365;
+}
+.wp-block-cards-block-category .category-title:hover {
+  background-color: #05324c;
+}
+.wp-block-cards-block-category .category-title::after {
+  content: ">";
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  left: auto;
+  pointer-events: none;
+  display: inline-block;
+  transition: transform 0.8s ease;
+  transform-origin: center center;
+  transform: rotate(90deg);
+}
+.wp-block-cards-block-category .category-title.opened::after {
+  transform: rotate(-90deg);
+}
+.wp-block-cards-block-category .category-title a,
+.wp-block-cards-block-category .category-title a:visited {
+  color: inherit;
+}
+.wp-block-cards-block-category .cards-list-category-contents.is-hidden {
+  display: none;
+}
+.wp-block-cards-block-list {
+  min-height: 5rem;
+}
+.wp-block-cards-block-list .cards-list-search {
+  margin: 0.3em 0.3em 1.5rem;
+}
+.wp-block-cards-block-list .cards-list-search.is-hidden {
+  display: none;
+}
+.wp-block-cards-block-list .cards-list-search .cards-list-search-controls .icon {
+  display: inline-block;
+  background: #fff;
+  border-radius: 1rem;
+  width: 2rem;
+  height: 2rem;
+  line-height: 2;
+  vertical-align: middle;
+  text-align: center;
+}
+.wp-block-cards-block-list .cards-list-search .cards-list-search-controls .icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.wp-block-cards-block-list .cards-list-search .cards-list-search-results {
+  position: absolute;
+  list-style: none;
+  padding-left: 0;
+  z-index: 5;
+  display: none;
+}
+.wp-block-cards-block-list .cards-list-search .cards-list-search-results.is-visible {
+  display: block;
+}
+.wp-block-cards-block-list .cards-list-search .cards-list-search-results > li {
+  margin: 0 auto;
+}
+.wp-block-cards-block-list .cards-list-search .cards-list-search-results .search-result {
+  margin: 0;
+  display: block;
+  position: relative;
+}
+.wp-block-cards-block-list .cards-list-search .cards-list-search-results .search-result figcaption {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translateY(5px);
+  z-index: 6;
+  background-color: #074365;
+  padding: 0.1rem 0.3rem;
+  font-size: 0.6rem;
+  margin: 0;
+}
+.wp-block-cards-block-list .cards-list-search .cards-list-search-results .search-result figcaption a {
+  color: #fff;
+}
+
+/*# sourceMappingURL=style-index.css.map*/

@@ -13,12 +13,12 @@
 
 	.card-image {
 		display: inline-block;
-		width: 300px;
+		width: 100%;
 		overflow: hidden;
 		text-align: center;
 
 		img {
-			width: 300px;
+			width: 100%;
 
 			&.clickable {
 				cursor: pointer;

@@ -11,12 +11,6 @@
  * @package         cards-block
  */
 
-/**
- * Registers all block assets so that they can be enqueued through the block editor
- * in the corresponding context.
- *
- * @see https://developer.wordpress.org/block-editor/tutorials/block-tutorial/applying-styles-with-stylesheets/
- */
 function cards_block_cards_block_init() {
 	$dir = __DIR__;
 
@@ -61,14 +55,11 @@ function cards_block_cards_block_init() {
 		)
 	);
 }
-add_action( 'init', 'cards_block_cards_block_init' );
 
 function p4_child_theme_gpca_whitelist_blocks( $allowed_blocks, $post ) {
 	array_push($allowed_blocks, 'cards-block/card', 'cards-block/category', 'cards-block/list');
 	return $allowed_blocks;
 }
-
-add_filter('allowed_block_types', 'p4_child_theme_gpca_whitelist_blocks', 11, 2);
 
 function categoryScript () {
 	if (!is_admin()) {
@@ -78,4 +69,7 @@ function categoryScript () {
   wp_enqueue_script('debounce', 'https://cdn.jsdelivr.net/npm/javascript-debounce@1.0.1/dist/javascript-debounce.min.js');
 	wp_enqueue_script( 'search',  plugins_url( '/client/search.js' , __FILE__ ) );
 }
+
+add_action( 'init', 'cards_block_cards_block_init' );
+add_filter('allowed_block_types', 'p4_child_theme_gpca_whitelist_blocks', 11, 2);
 add_action( 'enqueue_block_assets', 'categoryScript' );
