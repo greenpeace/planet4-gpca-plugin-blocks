@@ -3,6 +3,7 @@
 
 	.cards-list-search {
 		margin: 0.3em 0.3em 1.5rem;
+		position: relative;
 
 		&.is-hidden {
 			display: none;
@@ -40,6 +41,7 @@
 
 			> li {
 				margin: 0 auto;
+				padding: 0;
 			}
 
 			.search-result {
