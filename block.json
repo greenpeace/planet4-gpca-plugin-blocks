@@ -4,7 +4,7 @@
 	"title": "Card",
 	"category": "text",
 	"icon": "admin-links",
-	"description": "Cards with clickable title, description, image, and more",
+	"description": "Cards with clickable title, description, image, and more!",
 	"textdomain": "cards",
 	"supports": {
 		"html": false
