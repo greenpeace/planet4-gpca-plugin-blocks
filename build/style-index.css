@@ -134,6 +134,7 @@
 }
 .wp-block-cards-block-list .cards-list-search {
   margin: 0.3em 0.3em 1.5rem;
+  position: relative;
 }
 .wp-block-cards-block-list .cards-list-search.is-hidden {
   display: none;
@@ -164,6 +165,7 @@
 }
 .wp-block-cards-block-list .cards-list-search .cards-list-search-results > li {
   margin: 0 auto;
+  padding: 0;
 }
 .wp-block-cards-block-list .cards-list-search .cards-list-search-results .search-result {
   margin: 0;
