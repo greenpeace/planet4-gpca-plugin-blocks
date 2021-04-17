@@ -1,6 +1,7 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 
+
 import CardEdit from './card/edit';
 import CardSave from './card/save';
 import './card/style.scss';
@@ -13,12 +14,14 @@ import ListEdit from './list/edit';
 import ListSave from './list/save';
 import './list/style.scss';
 
+import { CardIcon, CategoryIcon, ListIcon } from './icons';
+
 registerBlockType( 'cards-block/card', {
 	apiVersion: 2,
 	title: __( 'Card', 'cards' ),
 	description: __( 'Cards with clickable title, description, image, and more', 'cards' ),
 	category: 'text',
-	icon: 'admin-links',
+	icon: CardIcon,
 	edit: CardEdit,
 	save: CardSave,
 	attributes: {
@@ -64,16 +67,21 @@ registerBlockType( 'cards-block/card', {
 			source: 'html',
 			selector: '.card-desc',
 		},
-		eventLocation: {
-			type: 'string',
-			source: 'html',
-			selector: '.card-event-location',
-		},
 		eventDate: {
 			type: 'string',
 			source: 'html',
 			selector: '.card-event-date',
 		},
+		eventLocation: {
+			type: 'string',
+			source: 'html',
+			selector: '.card-event-location',
+		},
+		coordinates: {
+			type: 'string',
+			source: 'html',
+			selector: '.card-coordinates'
+		}
 	},
 	example: {
 		attributes: {
@@ -99,7 +107,7 @@ registerBlockType( 'cards-block/category', {
 	supports: {
 		align: true,
 	},
-	icon: 'admin-links',
+	icon: CategoryIcon,
 	edit: CategoryEdit,
 	save: CategorySave,
 	attributes: {
@@ -119,7 +127,7 @@ registerBlockType( 'cards-block/list', {
 		align: true,
 	},
 	category: 'text',
-	icon: 'admin-links',
+	icon: ListIcon,
 	edit: ListEdit,
 	save: ListSave,
 	attributes: {
@@ -130,5 +138,18 @@ registerBlockType( 'cards-block/list', {
 			attribute: 'value',
 			default: 'false',
 		},
+		showMap: {
+			type: 'string',
+			source: 'attribute',
+			selector: '.show-map',
+			attribute: 'value',
+			default: 'false'
+		},
+		mapApiKey: {
+			type: 'string',
+			source: 'attribute',
+			selector: '.map-api-key',
+			attribute: 'value'
+		}
 	},
 } );

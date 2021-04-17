@@ -33,6 +33,7 @@ function Edit( {
 		desc,
 		eventDate,
 		eventLocation,
+		coordinates
 	},
 	setAttributes,
 } ) {
@@ -175,6 +176,17 @@ function Edit( {
 							} }
 						</TabPanel>
 					</PanelBody>
+					<PanelBody
+						title={ __( 'Geolocation', 'cards' ) }
+						initialOpen={ false }
+					>
+						<PlainText
+							type="string"
+							value={ coordinates }
+							onChange={ updateAttribute( 'coordinates' ) }
+							placeholder={ __( 'Lng, Lat (-73.6, 45.5)', 'cards' ) }
+						/>
+					</PanelBody>
 				</div>
 			</InspectorControls>
 			<div className="aCard card-editor">
@@ -220,6 +232,9 @@ function Edit( {
 					placeholder={ __( 'Event location', 'cards' ) }
 					{ ...commonRichTextOptions }
 				/>
+				{ coordinates && (
+					<span className="card-coordinates">{coordinates}</span>
+				)}
 			</div>
 		</div>
 	);

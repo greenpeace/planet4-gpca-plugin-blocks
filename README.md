@@ -11,6 +11,7 @@ Easily create nice cards, complete with:
 - date and optional location for event cards
 - categories
 - search
+- map
 
 ![Screenshot](/screenshot.png)
 

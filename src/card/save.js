@@ -10,6 +10,7 @@ export default function save( {
 		imgUrl,
 		eventDate,
 		eventLocation,
+		coordinates
 	},
 } ) {
 	const imageUrl = imgSrc === 'lib' ? mediaUrl : imgUrl;
@@ -42,6 +43,9 @@ export default function save( {
 						<RichText.Content value={ eventLocation } />
 					</span>
 				) }
+				{ coordinates && (
+					<span className="card-coordinates">{coordinates}</span>
+				)}
 			</div>
 		</div>
 	);

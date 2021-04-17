@@ -97,7 +97,6 @@
 
 			function updateResults() {
 				const filtered = miniSearch.search( query );
-
 				empty( searchResults );
 
 				if ( filtered.length > 0 ) {
@@ -152,10 +151,12 @@
 
 	function showSearchResults() {
 		searchResults.classList.add( 'is-visible' );
+		searchResults.classList.remove( 'is-hidden' );
 	}
 
 	function dissmissSearchResults() {
 		searchResults.classList.remove( 'is-visible' );
+		searchResults.classList.add( 'is-hidden' );
 	}
 
 	function isWithin( el, selectors ) {

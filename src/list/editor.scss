@@ -1,3 +1,16 @@
 .wp-block-cards-block-list {
 	border: 1px dashed #e2e4e7;
 }
+
+.warn {
+	background-color: #ff0;
+}
+
+.map-area {
+	position: relative;
+}
+.map-btns {
+	position: absolute;
+	top: .8rem;
+	left: .8rem;
+}
