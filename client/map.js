@@ -89,8 +89,8 @@
     }, {});
 
     return [
-      [minLon, minLat],
-      [maxLon, maxLat]
+      [minLon || -143, minLat || 44],
+      [maxLon || -51, maxLat || 70]
     ];
   };
 
