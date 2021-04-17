@@ -41,9 +41,4 @@ See https://developer.wordpress.org/block-editor/reference-guides/packages/packa
 
 ## Changelog
 
-### 0.0.1
-* Initial Release
-
-### 0.0.2
-* Fix styling issues revealed by including the plugin into the GPCA styling environment
-* Tiny bit of cleanup
+See [CHANGELOG.md](/CHANGELOG.md)
