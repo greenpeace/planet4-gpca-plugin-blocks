@@ -16,6 +16,18 @@ import './list/style.scss';
 
 import { CardIcon, CategoryIcon, ListIcon } from './icons';
 
+const exampleCardAttributes = {
+	url: 'https://perdu.com',
+	title: "Perdu sur l'Internet?",
+	desc: 'Un site web facétieux consistant en un détournement du concept du « vous êtes ici »',
+	imgSrc: 'url',
+	imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Perdu.svg',
+	imgAlt: 'Screenshot',
+	mediaId: 0,
+	eventDate: 'Depuis le 19 juin 1996',
+	eventLocation: 'perdu.com'
+};
+
 registerBlockType( 'cards-block/card', {
 	apiVersion: 2,
 	title: __( 'Card', 'cards' ),
@@ -84,16 +96,7 @@ registerBlockType( 'cards-block/card', {
 		}
 	},
 	example: {
-		attributes: {
-			url: 'http://perdu.com',
-			title: "Perdu sur l'Internet?",
-			desc: 'Pas de panique, on va vous aider',
-			imgUrl:
-				'https://upload.wikimedia.org/wikipedia/commons/9/93/Perdu.svg',
-			mediaId: 0,
-			imageUrl:
-				'https://upload.wikimedia.org/wikipedia/commons/9/93/Perdu.svg',
-		},
+		attributes: exampleCardAttributes,
 	},
 } );
 
@@ -152,4 +155,18 @@ registerBlockType( 'cards-block/list', {
 			attribute: 'value'
 		}
 	},
+	example: {
+		showSearch: 'true',
+		showMap: 'false',
+		innerBlocks: [{
+			name: 'cards-block/category',
+			attributes: {
+				title: 'Liens'
+			},
+			innerBlocks: [{
+				name: 'cards-block/card',
+				attributes: exampleCardAttributes
+			}]
+		}]
+	}
 } );
