@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Cards
  * Description:     Cards with clickable title, description, image, and more
- * Version:         0.1.1
+ * Version:         0.2.1
  * Author:          Shawn Inder &lt;shawninder@gmail.com&gt;
  * License:         GPL-3.0-or-later
  * License URI:     http://www.gnu.org/licenses/gpl-3.0.html
@@ -10,6 +10,8 @@
  *
  * @package         cards-block
  */
+
+const VERSION = "0.2.1";
 
 function cards_block_cards_block_init() {
 	$dir = __DIR__;
@@ -62,25 +64,22 @@ function p4_child_theme_gpca_whitelist_blocks( $allowed_blocks, $post ) {
 	return $allowed;
 }
 
-function categoryAssets () {
-	if (!is_admin()) {
-	  wp_enqueue_script( 'collapseCategories',  plugins_url( '/client/collapseCategories.js' , __FILE__ ) );
-	}
-}
-function searchAssets () {
-	wp_enqueue_script('minisearch', 'https://cdn.jsdelivr.net/npm/minisearch@3.0.2/dist/umd/index.min.js' );
-  wp_enqueue_script('debounce', 'https://cdn.jsdelivr.net/npm/javascript-debounce@1.0.1/dist/javascript-debounce.min.js');
-	wp_enqueue_script( 'search',  plugins_url( '/client/search.js' , __FILE__ ) );
-}
-function mapAssets () {
-	wp_enqueue_script('mapboxgl', 'https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js' );
-	wp_enqueue_style('mapboxgl-css', 'https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css');
-	wp_enqueue_style('map-css', plugins_url( '/client/map.css' , __FILE__ ));
-	wp_enqueue_script( 'map',  plugins_url( '/client/map.js' , __FILE__ ) );
+function p4_child_theme_gpca_enqueue_block_assets () {
+	wp_enqueue_style(
+		'client-css',
+		plugins_url( '/build/client.css' , __FILE__ ),
+		array(),
+		VERSION
+	);
+	wp_enqueue_script(
+		'client',
+		plugins_url( '/build/client.js' , __FILE__ ),
+		array(),
+		VERSION,
+		true
+	);
 }
 
 add_action( 'init', 'cards_block_cards_block_init' );
 add_filter('allowed_block_types', 'p4_child_theme_gpca_whitelist_blocks', 11, 2);
-add_action( 'enqueue_block_assets', 'categoryAssets' );
-add_action( 'enqueue_block_assets', 'searchAssets' );
-add_action( 'enqueue_block_assets', 'mapAssets' );
+add_action( 'enqueue_block_assets', 'p4_child_theme_gpca_enqueue_block_assets' );

@@ -7,11 +7,7 @@ import {
 	MediaUploadCheck,
 } from '@wordpress/block-editor';
 import { withSelect } from '@wordpress/data';
-import {
-	PanelBody,
-	TabPanel,
-	Button,
-} from '@wordpress/components';
+import { PanelBody, TabPanel, Button } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import updater from '../common/updater';
 
@@ -33,7 +29,7 @@ function Edit( {
 		desc,
 		eventDate,
 		eventLocation,
-		coordinates
+		coordinates,
 	},
 	setAttributes,
 } ) {
@@ -184,12 +180,12 @@ function Edit( {
 							type="string"
 							value={ coordinates }
 							onChange={ updateAttribute( 'coordinates' ) }
-							placeholder={ __( 'Lng, Lat (-73.6, 45.5)', 'cards' ) }
+							placeholder={ __( 'Coordinates', 'cards' ) }
 						/>
 					</PanelBody>
 				</div>
 			</InspectorControls>
-			<div className="aCard card-editor">
+			<div className="a-card card-editor">
 				{ imageUrl && (
 					<div className="card-image">
 						<img src={ imageUrl } alt={ title || url } />
@@ -233,8 +229,8 @@ function Edit( {
 					{ ...commonRichTextOptions }
 				/>
 				{ coordinates && (
-					<span className="card-coordinates">{coordinates}</span>
-				)}
+					<span className="card-coordinates">{ coordinates }</span>
+				) }
 			</div>
 		</div>
 	);

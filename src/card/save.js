@@ -10,14 +10,14 @@ export default function save( {
 		imgUrl,
 		eventDate,
 		eventLocation,
-		coordinates
+		coordinates,
 	},
 } ) {
 	const imageUrl = imgSrc === 'lib' ? mediaUrl : imgUrl;
 
 	return (
 		<div { ...useBlockProps.save() }>
-			<div className="aCard">
+			<div className="a-card">
 				{ imageUrl && (
 					<div className="card-image" data-imgsrc={ imgSrc }>
 						<img src={ imageUrl } alt={ title || url } />
@@ -44,8 +44,8 @@ export default function save( {
 					</span>
 				) }
 				{ coordinates && (
-					<span className="card-coordinates">{coordinates}</span>
-				)}
+					<span className="card-coordinates">{ coordinates }</span>
+				) }
 			</div>
 		</div>
 	);

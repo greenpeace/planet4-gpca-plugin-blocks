@@ -1,16 +1,17 @@
 {
 	"name": "planet4-gpca-plugin-blocks",
-	"version": "0.1.1",
+	"version": "0.2.1",
 	"description": "Cards with clickable title, description, image, and more",
 	"author": "Shawn Inder <shawninder@gmail.com>",
 	"license": "GPL-3.0-or-later",
 	"main": "build/index.js",
 	"scripts": {
-		"build": "wp-scripts build",
+		"build": "wp-scripts build ./src/client.js ./src/index.js",
 		"format:js": "wp-scripts format-js",
 		"lint:css": "wp-scripts lint-style",
 		"lint:js": "wp-scripts lint-js",
-		"start": "wp-scripts start",
+		"lint:package": "wp-scripts lint-pkg-json",
+		"start": "wp-scripts start ./src/client.js ./src/index.js",
 		"packages-update": "wp-scripts packages-update"
 	},
 	"dependencies": {
@@ -23,6 +24,10 @@
 		"lodash.debounce": "4.0.8"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "13.0.3"
+		"@wordpress/scripts": "13.0.3",
+		"coordinate-parser": "1.0.7",
+		"javascript-debounce": "1.0.1",
+		"mapbox-gl": "2.2.0",
+		"minisearch": "3.0.2"
 	}
 }

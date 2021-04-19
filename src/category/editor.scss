@@ -1,3 +1,12 @@
-.wp-block-cards-block-category {
-  
+.wp-block-cards-block-list > .block-editor-inner-blocks > .block-editor-block-list__layout > .block-list-appender {
+	background-color: #074365;
+	padding: 0.6rem 0.4rem;
+
+	button.block-editor-button-block-appender {
+		width: 100%;
+
+		svg {
+			background-color: transparent;
+		}
+	}
 }

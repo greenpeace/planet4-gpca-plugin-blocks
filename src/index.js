@@ -1,7 +1,6 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 
-
 import CardEdit from './card/edit';
 import CardSave from './card/save';
 import './card/style.scss';
@@ -19,19 +18,23 @@ import { CardIcon, CategoryIcon, ListIcon } from './icons';
 const exampleCardAttributes = {
 	url: 'https://perdu.com',
 	title: "Perdu sur l'Internet?",
-	desc: 'Un site web facétieux consistant en un détournement du concept du « vous êtes ici »',
+	desc:
+		'Un site web facétieux consistant en un détournement du concept du « vous êtes ici »',
 	imgSrc: 'url',
 	imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Perdu.svg',
 	imgAlt: 'Screenshot',
 	mediaId: 0,
 	eventDate: 'Depuis le 19 juin 1996',
-	eventLocation: 'perdu.com'
+	eventLocation: 'perdu.com',
 };
 
 registerBlockType( 'cards-block/card', {
 	apiVersion: 2,
 	title: __( 'Card', 'cards' ),
-	description: __( 'Cards with clickable title, description, image, and more', 'cards' ),
+	description: __(
+		'Cards with clickable title, description, image, and more',
+		'cards'
+	),
 	category: 'text',
 	icon: CardIcon,
 	edit: CardEdit,
@@ -92,8 +95,8 @@ registerBlockType( 'cards-block/card', {
 		coordinates: {
 			type: 'string',
 			source: 'html',
-			selector: '.card-coordinates'
-		}
+			selector: '.card-coordinates',
+		},
 	},
 	example: {
 		attributes: exampleCardAttributes,
@@ -102,11 +105,8 @@ registerBlockType( 'cards-block/card', {
 
 registerBlockType( 'cards-block/category', {
 	apiVersion: 2,
-	title: __( 'List Category', 'category' ),
-	description: __(
-		'Collapsible category for searchable lists of cards',
-		'category'
-	),
+	title: __( 'Card Category', 'category' ),
+	description: __( 'Collapsible category for card list', 'category' ),
 	supports: {
 		align: true,
 	},
@@ -125,7 +125,10 @@ registerBlockType( 'cards-block/category', {
 registerBlockType( 'cards-block/list', {
 	apiVersion: 2,
 	title: __( 'List of cards', 'cards' ),
-	description: __( 'List of cards with categories, search and more', 'cards' ),
+	description: __(
+		'List of cards with categories, search and more',
+		'cards'
+	),
 	supports: {
 		align: true,
 	},
@@ -146,27 +149,31 @@ registerBlockType( 'cards-block/list', {
 			source: 'attribute',
 			selector: '.show-map',
 			attribute: 'value',
-			default: 'false'
+			default: 'false',
 		},
 		mapApiKey: {
 			type: 'string',
 			source: 'attribute',
 			selector: '.map-api-key',
-			attribute: 'value'
-		}
+			attribute: 'value',
+		},
 	},
 	example: {
 		showSearch: 'true',
 		showMap: 'false',
-		innerBlocks: [{
-			name: 'cards-block/category',
-			attributes: {
-				title: 'Liens'
+		innerBlocks: [
+			{
+				name: 'cards-block/category',
+				attributes: {
+					title: 'Liens',
+				},
+				innerBlocks: [
+					{
+						name: 'cards-block/card',
+						attributes: exampleCardAttributes,
+					},
+				],
 			},
-			innerBlocks: [{
-				name: 'cards-block/card',
-				attributes: exampleCardAttributes
-			}]
-		}]
-	}
+		],
+	},
 } );

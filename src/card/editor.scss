@@ -1,3 +1,16 @@
+.wp-block-cards-block-card + .block-list-appender {
+
+	button.block-editor-button-block-appender {
+		border: 1px solid #000;
+		border-radius: 5px;
+
+		svg {
+			background-color: transparent;
+			fill: #000;
+		}
+	}
+}
+
 .card-settings input,
 .card-editor input,
 .card-title,

@@ -2,7 +2,7 @@ import {
 	InspectorControls,
 	InnerBlocks,
 	useBlockProps,
-	PlainText
+	PlainText,
 } from '@wordpress/block-editor';
 import { PanelBody, CheckboxControl } from '@wordpress/components';
 import { useEffect } from '@wordpress/element';
@@ -16,19 +16,16 @@ import './editor.scss';
 const ALLOWED_BLOCKS = [ 'cards-block/category' ];
 
 export default function Edit( {
-	attributes: {
-		showSearch,
-		showMap,
-		mapApiKey
-	}, setAttributes } ) {
+	attributes: { showSearch, showMap, mapApiKey },
+	setAttributes,
+} ) {
+	const updateAttribute = updater( setAttributes );
 
-	useEffect(() => {
-		if (showMap && mapApiKey) {
+	useEffect( () => {
+		if ( showMap && mapApiKey && window.MAP_loadMap ) {
 			window.MAP_loadMap();
 		}
-	}, [showMap, mapApiKey])
-
-	const updateAttribute = updater( setAttributes );
+	}, [ showMap, mapApiKey ] );
 
 	return (
 		<div { ...useBlockProps() }>
@@ -49,36 +46,42 @@ export default function Edit( {
 						/>
 					</PanelBody>
 					<PanelBody
-						title={ __('Map', 'cards')}
-						initialOpen={true}
+						title={ __( 'Map', 'cards' ) }
+						initialOpen={ true }
 					>
 						<CheckboxControl
-							label={__('Enable Map', 'cards')}
-							checked={showMap === 'true'}
-							onChange={(bool) => {
-							  return updateAttribute('showMap')(
+							label={ __( 'Enable Map', 'cards' ) }
+							checked={ showMap === 'true' }
+							onChange={ ( bool ) => {
+								return updateAttribute( 'showMap' )(
 									bool ? 'true' : 'false'
-								)
-							}}
+								);
+							} }
 						/>
 						{ showMap === 'true' && (
 							<PlainText
-								type='string'
-								value={mapApiKey}
-								onChange={updateAttribute('mapApiKey')}
-								placeholder={__('MapBox API key', 'cards')}
-								className={!mapApiKey ? 'warn' : ''}
+								type="string"
+								value={ mapApiKey }
+								onChange={ updateAttribute( 'mapApiKey' ) }
+								placeholder={ __( 'MapBox API key', 'cards' ) }
+								className={ ! mapApiKey ? 'warn' : '' }
 							/>
-						)}
+						) }
 					</PanelBody>
 				</div>
 			</InspectorControls>
 			<Search show={ showSearch } />
-			<div className='map-area'>
-				<Map show={showMap} apiKey={mapApiKey} />
-				<div className={`map-btns ${showMap === 'true' ? 'is-visible' : 'is-hidden'}`}>
-					<button onClick={window.MAP_updateMarkers}>Refresh Markers</button>
-					<button onClick={window.MAP_autofit}>Auto-fit</button>
+			<div className="map-area">
+				<Map show={ showMap } apiKey={ mapApiKey } />
+				<div
+					className={ `map-btns ${
+						showMap === 'true' ? 'is-visible' : 'is-hidden'
+					}` }
+				>
+					<button onClick={ window.MAP_updateMarkers }>
+						Refresh Markers
+					</button>
+					<button onClick={ window.MAP_autofit }>Auto-fit</button>
 				</div>
 			</div>
 			<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />

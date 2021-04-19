@@ -3,7 +3,7 @@
 	vertical-align: text-top;
 }
 
-.aCard {
+.a-card {
 	margin: 0.3rem;
 	width: 300px;
 	background: rgba(255, 255, 255, 0.95);
@@ -56,6 +56,7 @@
 		padding: 0.3rem;
 		font-weight: 700;
 	}
+
 	.card-coordinates {
 		display: none;
 	}
@@ -65,7 +66,7 @@
 	width: 100%;
 	box-shadow: 0 0 10px 0 rgba(50, 50, 50, 0.41);
 
-	.aCard {
+	.a-card {
 		margin: 0;
 		position: relative;
 		width: 100%;
