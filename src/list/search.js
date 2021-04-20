@@ -7,7 +7,7 @@ export default function Search( { show } ) {
 				show === 'true' ? 'is-visible' : 'is-hidden'
 			}` }
 		>
-			<input className="show-search" type="hidden" value={ show } />
+			<span className="data-hidden show-search">{ show }</span>
 			<div className="cards-list-search-controls">
 				<span
 					className="icon"

@@ -1,7 +1,7 @@
 .wp-block-cards-block-list {
 	min-height: 5rem;
 
-	.is-hidden {
+	.data-hidden, .is-hidden {
 		display: none;
 	}
 
@@ -88,8 +88,4 @@
 			height: 600px;
 		}
 	}
-}
-
-.map-api-key-2 {
-	display: none;
 }

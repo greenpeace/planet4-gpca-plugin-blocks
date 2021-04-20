@@ -139,28 +139,20 @@ registerBlockType( 'cards-block/list', {
 	attributes: {
 		showSearch: {
 			type: 'string',
-			source: 'attribute',
+			source: 'html',
 			selector: '.show-search',
-			attribute: 'value',
 			default: 'false',
 		},
 		showMap: {
 			type: 'string',
-			source: 'attribute',
+			source: 'html',
 			selector: '.show-map',
-			attribute: 'value',
 			default: 'false',
 		},
 		mapApiKey: {
 			type: 'string',
-			source: 'attribute',
-			selector: '.map-api-key',
-			attribute: 'value',
-		},
-		mapApiKey2: {
-			type: 'string',
 			source: 'html',
-			selector: '.map-api-key-2'
+			selector: '.map-api-key',
 		},
 	},
 	example: {
