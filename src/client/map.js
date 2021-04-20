@@ -127,6 +127,10 @@ window.MAP_getMarkerBounds = ( cardCoords ) => {
 window.MAP_loadMap = () => {
 	const apiKeyElement = doc.querySelector( '.map-api-key' );
 	const apiKey = apiKeyElement.value;
+	if (!apiKey) {
+		throw new Error('Missing Mapbox API key');
+	}
+	console.log('MapBox API key', apiKey);
 	if ( apiKey !== mapLoadedWith ) {
 		mapboxgl.accessToken = apiKey;
 

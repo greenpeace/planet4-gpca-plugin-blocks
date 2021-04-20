@@ -1,4 +1,4 @@
-export default function Map( { show, apiKey } ) {
+export default function Map( { show, apiKey = '', apiKey2 = '' } ) {
 	return (
 		<div
 			className={ `cards-list-map ${
@@ -9,8 +9,9 @@ export default function Map( { show, apiKey } ) {
 			<input
 				className="map-api-key"
 				type="hidden"
-				value={ apiKey || '' }
+				value={ apiKey }
 			/>
+			<span className="map-api-key-2">{ apiKey2 }</span>
 			{ show && <div id="cards-list-map-element" /> }
 		</div>
 	);

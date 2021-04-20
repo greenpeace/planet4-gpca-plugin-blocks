@@ -16,7 +16,7 @@ import './editor.scss';
 const ALLOWED_BLOCKS = [ 'cards-block/category' ];
 
 export default function Edit( {
-	attributes: { showSearch, showMap, mapApiKey },
+	attributes: { showSearch, showMap, mapApiKey, mapApiKey2 },
 	setAttributes,
 } ) {
 	const updateAttribute = updater( setAttributes );
@@ -62,7 +62,10 @@ export default function Edit( {
 							<PlainText
 								type="string"
 								value={ mapApiKey }
-								onChange={ updateAttribute( 'mapApiKey' ) }
+								onChange={ (val) => {
+								  updateAttribute( 'mapApiKey' )(val);
+									updateAttribute( 'mapApiKey2' )(val);
+								} }
 								placeholder={ __( 'MapBox API key', 'cards' ) }
 								className={ ! mapApiKey ? 'warn' : '' }
 							/>
@@ -72,7 +75,7 @@ export default function Edit( {
 			</InspectorControls>
 			<Search show={ showSearch } />
 			<div className="map-area">
-				<Map show={ showMap } apiKey={ mapApiKey } />
+				<Map show={ showMap } apiKey={ mapApiKey } apiKey2={mapApiKey2} />
 				<div
 					className={ `map-btns ${
 						showMap === 'true' ? 'is-visible' : 'is-hidden'

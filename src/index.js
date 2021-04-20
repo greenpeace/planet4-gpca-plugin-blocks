@@ -157,6 +157,11 @@ registerBlockType( 'cards-block/list', {
 			selector: '.map-api-key',
 			attribute: 'value',
 		},
+		mapApiKey2: {
+			type: 'string',
+			source: 'html',
+			selector: '.map-api-key-2'
+		},
 	},
 	example: {
 		showSearch: 'true',
