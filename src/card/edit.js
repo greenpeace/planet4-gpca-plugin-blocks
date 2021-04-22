@@ -217,7 +217,7 @@ function Edit( {
 					tagName="p"
 					value={ desc }
 					onChange={ updateAttribute( 'desc' ) }
-					placeholder={ __( 'Description…', 'cards' ) }
+					placeholder={ __( 'Short description…', 'cards' ) }
 					{ ...commonRichTextOptions }
 				/>
 				<RichText
