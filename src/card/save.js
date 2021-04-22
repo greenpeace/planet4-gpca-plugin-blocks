@@ -3,6 +3,7 @@ import { useBlockProps, RichText } from '@wordpress/block-editor';
 export default function save( {
 	attributes: {
 		url,
+		target,
 		title,
 		desc,
 		imgSrc,
@@ -24,7 +25,7 @@ export default function save( {
 					</div>
 				) }
 				<strong className="card-title">
-					<a href={ url }>
+					<a href={ url } target={target}>
 						<RichText.Content value={ title || url } />
 					</a>
 				</strong>

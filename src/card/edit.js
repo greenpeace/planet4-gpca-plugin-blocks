@@ -7,7 +7,7 @@ import {
 	MediaUploadCheck,
 } from '@wordpress/block-editor';
 import { withSelect } from '@wordpress/data';
-import { PanelBody, TabPanel, Button } from '@wordpress/components';
+import { PanelBody, TabPanel, Button, CheckboxControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import updater from '../common/updater';
 
@@ -20,6 +20,7 @@ const commonRichTextOptions = {
 function Edit( {
 	attributes: {
 		url,
+		target,
 		imgSrc,
 		mediaId,
 		mediaUrl,
@@ -52,6 +53,13 @@ function Edit( {
 							value={ url }
 							onChange={ updateAttribute( 'url' ) }
 							placeholder={ __( 'URL', 'cards' ) }
+						/>
+						<CheckboxControl
+							label={__('Open in new tab', 'cards')}
+							checked={ target === '_blank' }
+							onChange={(bool) => {
+							  return updateAttribute('target')(bool ? '_blank' : '_self');
+							}}
 						/>
 					</PanelBody>
 					<PanelBody
@@ -192,7 +200,7 @@ function Edit( {
 					</div>
 				) }
 				<div className="card-title">
-					<a className="card-url" href={ url }>
+					<a className="card-url" href={ url } target={target}>
 						{ title }
 					</a>
 					<RichText

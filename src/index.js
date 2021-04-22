@@ -46,6 +46,13 @@ registerBlockType( 'cards-block/card', {
 			selector: 'a',
 			attribute: 'href',
 		},
+		target: {
+			type: 'string',
+			source: 'attribute',
+			selector: '.card-title a',
+			attribute: 'target',
+			default: '_self'
+		},
 		imgSrc: {
 			type: 'string',
 			default: 'lib',
