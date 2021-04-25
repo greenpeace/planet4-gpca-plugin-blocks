@@ -11,8 +11,6 @@
  * @package         cards-block
  */
 
-const VERSION = "0.2.3";
-
 function cards_block_cards_block_init() {
 	$dir = __DIR__;
 
@@ -65,17 +63,20 @@ function p4_child_theme_gpca_whitelist_blocks( $allowed_blocks, $post ) {
 }
 
 function p4_child_theme_gpca_enqueue_block_assets () {
+	$dir = __DIR__;
+	$client_css = '/build/client.css';
 	wp_enqueue_style(
 		'client-css',
-		plugins_url( '/build/client.css' , __FILE__ ),
+		plugins_url( $client_css , __FILE__ ),
 		array(),
-		VERSION
+		filemtime( "$dir/$client_css" )
 	);
+	$client_js = '/build/client.js';
 	wp_enqueue_script(
 		'client',
-		plugins_url( '/build/client.js' , __FILE__ ),
+		plugins_url( $client_js , __FILE__ ),
 		array(),
-		VERSION,
+		filemtime( "$dir/$client_js" ),
 		true
 	);
 }
