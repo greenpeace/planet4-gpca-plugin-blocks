@@ -32,9 +32,8 @@ Things may behave differently in your Wordpress installation due to conflicting 
 1. Clone or fork this repo
 2. install dependencies: `npm install && npm install -g @wordpress/env`
 3. build (and automatically rebuild when files change): `npm start`
-4. launch a Wordpress environment in this directory: `wp-env start`
-
-Note: this used to work, but currently doesn't (at least for me)
+4. launch a Wordpress environment in this directory: `wp-env start` (should say `Wordpress development site started at http://localhost:8888/`)
+5. Visit the dev site and log in with username `admin` and password `password`
 
 ## Troubleshooting
 
