@@ -15,6 +15,8 @@ import './list/style.scss';
 
 import { CardIcon, CategoryIcon, ListIcon } from './icons';
 
+import mapStyles from './common/mapStyles';
+
 const exampleCardAttributes = {
 	url: 'https://perdu.com',
 	title: "Perdu sur l'Internet?",
@@ -161,6 +163,12 @@ registerBlockType( 'cards-block/list', {
 			source: 'html',
 			selector: '.map-api-key',
 		},
+		mapStyle: {
+			type: 'string',
+			source: 'html',
+			selector: '.map-style',
+			default: mapStyles[0]
+		}
 	},
 	example: {
 		showSearch: 'true',

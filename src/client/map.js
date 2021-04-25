@@ -6,7 +6,7 @@ import './map.css';
 
 const doc = window.document;
 const container = 'cards-list-map-element';
-let mapLoadedWith = null;
+window.MAP_loadedWith = null;
 let map = null;
 let markers = [];
 
@@ -126,31 +126,42 @@ window.MAP_getMarkerBounds = ( cardCoords ) => {
 
 window.MAP_loadMap = () => {
 	const apiKeyElement = doc.querySelector( '.map-api-key' );
+	if (!apiKeyElement) {
+		throw new Error('missing api key element');
+	}
 	const apiKey = apiKeyElement.innerText;
 	if (!apiKey) {
 		throw new Error('Missing Mapbox API key');
 	}
-	console.log('MapBox API key', apiKey);
-	if ( apiKey !== mapLoadedWith ) {
+
+	if ( apiKey !== window.MAP_loadedWith ) {
 		mapboxgl.accessToken = apiKey;
 
 		const cardCoords = window.MAP_getCardCoordinates();
 
+		const fallback = 'mapbox://styles/mapbox/outdoors-v11';
+		const styleElement = doc.querySelector('.map-style');
+		const styleText = styleElement ? styleElement.innerText : false;
+
 		map = new mapboxgl.Map( {
 			container,
-			style: 'mapbox://styles/mapbox/outdoors-v11',
+			style: styleText || fallback
 		} );
 		try {
 			map.fitBounds( window.MAP_getMarkerBounds( cardCoords ), {
-				padding: 16,
+				padding: { top: 16, right: 16, bottom: 45, left: 16 }
 			} );
 		} catch ( ex ) {
 			console.warn( ex );
 		}
 		window.MAP_setMarkers( cardCoords );
-		mapLoadedWith = mapboxgl.accessToken;
+		window.MAP_loadedWith = mapboxgl.accessToken;
 	}
 };
+
+window.MAP_setStyle = (style) => {
+  map.setStyle(style);
+}
 
 window.MAP_autofit = () => {
 	const cardCoords = window.MAP_getCardCoordinates();

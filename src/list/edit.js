@@ -4,19 +4,20 @@ import {
 	useBlockProps,
 	PlainText,
 } from '@wordpress/block-editor';
-import { PanelBody, CheckboxControl } from '@wordpress/components';
+import { PanelBody, CheckboxControl, SelectControl } from '@wordpress/components';
 import { useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import Search from './search';
 import Map from './map';
 import updater from '../common/updater';
+import mapStyles from '../common/mapStyles';
 
 import './editor.scss';
 
 const ALLOWED_BLOCKS = [ 'cards-block/category' ];
 
 export default function Edit( {
-	attributes: { showSearch, showMap, mapApiKey },
+	attributes: { showSearch, showMap, mapApiKey, mapStyle },
 	setAttributes,
 } ) {
 	const updateAttribute = updater( setAttributes );
@@ -26,6 +27,12 @@ export default function Edit( {
 			window.MAP_loadMap();
 		}
 	}, [ showMap, mapApiKey ] );
+
+	useEffect(() => {
+	  if (showMap && mapApiKey && window.MAP_loadedWith !== null && window.MAP_setStyle) {
+			window.MAP_setStyle(mapStyle);
+		}
+	}, [mapStyle]);
 
 	return (
 		<div { ...useBlockProps() }>
@@ -59,20 +66,28 @@ export default function Edit( {
 							} }
 						/>
 						{ showMap === 'true' && (
-							<PlainText
-								type="string"
-								value={ mapApiKey }
-								onChange={ updateAttribute( 'mapApiKey' ) }
-								placeholder={ __( 'MapBox API key', 'cards' ) }
-								className={ ! mapApiKey ? 'warn' : '' }
-							/>
+							<>
+								<PlainText
+									type="string"
+									value={ mapApiKey }
+									onChange={ updateAttribute( 'mapApiKey' ) }
+									placeholder={ __( 'MapBox API key', 'cards' ) }
+									className={ ! mapApiKey ? 'warn' : '' }
+								/>
+								<SelectControl
+									label={__('Map style', 'cards')}
+									value={mapStyle}
+									options={mapStyles}
+									onChange={updateAttribute('mapStyle')}
+								/>
+							</>
 						) }
 					</PanelBody>
 				</div>
 			</InspectorControls>
 			<Search show={ showSearch } />
 			<div className="map-area">
-				<Map show={ showMap } apiKey={ mapApiKey } />
+				<Map show={ showMap } apiKey={ mapApiKey } style={mapStyle} />
 				<div
 					className={ `map-btns ${
 						showMap === 'true' ? 'is-visible' : 'is-hidden'
