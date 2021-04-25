@@ -200,8 +200,8 @@ function Edit( {
 					</div>
 				) }
 				<div className="card-title">
-					<a className="card-url" href={ url } target={target}>
-						{ title }
+					<a className="card-url" href={ url } target={target} rel="noopener noreferrer">
+						{ title || url}
 					</a>
 					<RichText
 						tagName="strong"
