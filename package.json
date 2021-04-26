@@ -1,12 +1,19 @@
 {
 	"name": "planet4-gpca-plugin-blocks",
-	"version": "0.2.4",
+	"version": "0.2.5",
 	"description": "Cards with clickable title, description, image, and more",
 	"author": "Shawn Inder <shawninder@gmail.com>",
 	"license": "GPL-3.0-or-later",
-	"keywords": ["Cards", "image", "map", "search"],
+	"keywords": [
+		"Cards",
+		"image",
+		"map",
+		"search"
+	],
 	"homepage": "https://github.com/greenpeace/planet4-gpca-plugin-blocks",
-	"repository": { "url": "https://github.com/greenpeace/planet4-gpca-plugin-blocks" },
+	"repository": {
+		"url": "https://github.com/greenpeace/planet4-gpca-plugin-blocks"
+	},
 	"bugs": "https://github.com/greenpeace/planet4-gpca-plugin-blocks/issues",
 	"main": "build/index.js",
 	"dependencies": {
