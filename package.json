@@ -4,16 +4,11 @@
 	"description": "Cards with clickable title, description, image, and more",
 	"author": "Shawn Inder <shawninder@gmail.com>",
 	"license": "GPL-3.0-or-later",
+	"keywords": ["Cards", "image", "map", "search"],
+	"homepage": "https://github.com/greenpeace/planet4-gpca-plugin-blocks",
+	"repository": { "url": "https://github.com/greenpeace/planet4-gpca-plugin-blocks" },
+	"bugs": "https://github.com/greenpeace/planet4-gpca-plugin-blocks/issues",
 	"main": "build/index.js",
-	"scripts": {
-		"build": "wp-scripts build ./src/client.js ./src/index.js",
-		"format:js": "wp-scripts format-js",
-		"lint:css": "wp-scripts lint-style",
-		"lint:js": "wp-scripts lint-js",
-		"lint:package": "wp-scripts lint-pkg-json",
-		"start": "wp-scripts start ./src/client.js ./src/index.js",
-		"packages-update": "wp-scripts packages-update"
-	},
 	"dependencies": {
 		"@wordpress/block-editor": "5.2.9",
 		"@wordpress/blocks": "7.0.5",
@@ -29,5 +24,14 @@
 		"javascript-debounce": "1.0.1",
 		"mapbox-gl": "2.2.0",
 		"minisearch": "3.0.2"
+	},
+	"scripts": {
+		"build": "wp-scripts build ./src/client.js ./src/index.js",
+		"format:js": "wp-scripts format-js",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"lint:package": "wp-scripts lint-pkg-json",
+		"start": "wp-scripts start ./src/client.js ./src/index.js",
+		"packages-update": "wp-scripts packages-update"
 	}
 }
