@@ -20,30 +20,39 @@ function cards_block_cards_block_init() {
 			'You need to run `npm start` or `npm run build` for the "cards-block/card" block first.'
 		);
 	}
-	$index_js     = 'build/index.js';
 	$script_asset = require( $script_asset_path );
+
+	$editor_script     = 'build/index.js';
 	wp_register_script(
 		'cards-block-card-block-editor',
-		plugins_url( $index_js, __FILE__ ),
+		plugins_url( $editor_script, __FILE__ ),
 		$script_asset['dependencies'],
 		$script_asset['version']
 	);
 	wp_set_script_translations( 'cards-block-card-block-editor', 'cards' );
 
-	$editor_css = 'build/index.css';
+	$editor_style = 'build/index.css';
 	wp_register_style(
 		'cards-block-card-block-editor',
-		plugins_url( $editor_css, __FILE__ ),
+		plugins_url( $editor_style, __FILE__ ),
 		array(),
-		filemtime( "$dir/$editor_css" )
+		filemtime( "$dir/$editor_style" )
 	);
 
-	$style_css = 'build/style-index.css';
+	$script = 'build/client.js';
+	wp_register_script(
+		'cards-block-card-block',
+		plugins_url( $script, __FILE__ ),
+		array(),
+		filemtime( "$dir/$script" )
+	);
+
+	$style = 'build/style-index.css';
 	wp_register_style(
 		'cards-block-card-block',
-		plugins_url( $style_css, __FILE__ ),
+		plugins_url( $style, __FILE__ ),
 		array(),
-		filemtime( "$dir/$style_css" )
+		filemtime( "$dir/$style" )
 	);
 
 	register_block_type(
@@ -52,6 +61,7 @@ function cards_block_cards_block_init() {
 			'editor_script' => 'cards-block-card-block-editor',
 			'editor_style'  => 'cards-block-card-block-editor',
 			'style'         => 'cards-block-card-block',
+			'script'				=> 'cards-block-card-block'
 		)
 	);
 }
@@ -62,25 +72,5 @@ function p4_child_theme_gpca_whitelist_blocks( $allowed_blocks, $post ) {
 	return $allowed;
 }
 
-function p4_child_theme_gpca_enqueue_block_assets () {
-	$dir = __DIR__;
-	$client_css = '/build/client.css';
-	wp_enqueue_style(
-		'client-css',
-		plugins_url( $client_css , __FILE__ ),
-		array(),
-		filemtime( "$dir/$client_css" )
-	);
-	$client_js = '/build/client.js';
-	wp_enqueue_script(
-		'client',
-		plugins_url( $client_js , __FILE__ ),
-		array(),
-		filemtime( "$dir/$client_js" ),
-		true
-	);
-}
-
 add_action( 'init', 'cards_block_cards_block_init' );
 add_filter('allowed_block_types', 'p4_child_theme_gpca_whitelist_blocks', 11, 2);
-add_action( 'enqueue_block_assets', 'p4_child_theme_gpca_enqueue_block_assets' );
