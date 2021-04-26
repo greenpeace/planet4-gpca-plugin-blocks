@@ -2,9 +2,13 @@ import {
 	InspectorControls,
 	InnerBlocks,
 	useBlockProps,
-	PlainText,
 } from '@wordpress/block-editor';
-import { PanelBody, CheckboxControl, SelectControl } from '@wordpress/components';
+import {
+	PanelBody,
+	CheckboxControl,
+	SelectControl,
+	TextControl,
+} from '@wordpress/components';
 import { useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import Search from './search';
@@ -28,11 +32,16 @@ export default function Edit( {
 		}
 	}, [ showMap, mapApiKey ] );
 
-	useEffect(() => {
-	  if (showMap && mapApiKey && window.MAP_loadedWith !== null && window.MAP_setStyle) {
-			window.MAP_setStyle(mapStyle);
+	useEffect( () => {
+		if (
+			showMap &&
+			mapApiKey &&
+			window.MAP_loadedWith !== null &&
+			window.MAP_setStyle
+		) {
+			window.MAP_setStyle( mapStyle );
 		}
-	}, [mapStyle]);
+	}, [ mapStyle ] );
 
 	return (
 		<div { ...useBlockProps() }>
@@ -67,18 +76,17 @@ export default function Edit( {
 						/>
 						{ showMap === 'true' && (
 							<>
-								<PlainText
-									type="string"
+								<TextControl
+									label={ __( 'MapBox API key', 'cards' ) }
 									value={ mapApiKey }
 									onChange={ updateAttribute( 'mapApiKey' ) }
-									placeholder={ __( 'MapBox API key', 'cards' ) }
 									className={ ! mapApiKey ? 'warn' : '' }
 								/>
 								<SelectControl
-									label={__('Map style', 'cards')}
-									value={mapStyle}
-									options={mapStyles}
-									onChange={updateAttribute('mapStyle')}
+									label={ __( 'Map style', 'cards' ) }
+									value={ mapStyle }
+									options={ mapStyles }
+									onChange={ updateAttribute( 'mapStyle' ) }
 								/>
 							</>
 						) }
@@ -87,7 +95,7 @@ export default function Edit( {
 			</InspectorControls>
 			<Search show={ showSearch } />
 			<div className="map-area">
-				<Map show={ showMap } apiKey={ mapApiKey } style={mapStyle} />
+				<Map show={ showMap } apiKey={ mapApiKey } style={ mapStyle } />
 				<div
 					className={ `map-btns ${
 						showMap === 'true' ? 'is-visible' : 'is-hidden'

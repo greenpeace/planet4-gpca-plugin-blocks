@@ -25,7 +25,7 @@ export default function save( {
 					</div>
 				) }
 				<strong className="card-title">
-					<a href={ url } target={target} rel="noopener noreferrer">
+					<a href={ url } target={ target } rel="noopener noreferrer">
 						<RichText.Content value={ title || url } />
 					</a>
 				</strong>

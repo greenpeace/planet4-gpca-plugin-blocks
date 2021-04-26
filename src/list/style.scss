@@ -1,7 +1,10 @@
+@import "https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css";
+
 .wp-block-cards-block-list {
 	min-height: 5rem;
 
-	.data-hidden, .is-hidden {
+	.data-hidden,
+	.is-hidden {
 		display: none;
 	}
 
@@ -86,6 +89,22 @@
 		#cards-list-map-element {
 			width: 100%;
 			height: 600px;
+
+			.marker {
+				width: 30px;
+				height: 30px;
+				border-radius: 15px;
+				background-color: #66cc01;
+				background-size: 200%;
+				background-position: center center;
+				background-repeat: no-repeat;
+			}
+
+			.mapboxgl-popup-content {
+				padding: 0;
+				background: unset;
+				box-shadow: unset;
+			}
 		}
 	}
 }

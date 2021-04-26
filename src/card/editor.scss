@@ -1,3 +1,5 @@
+@import "src/common/warn.scss";
+
 .wp-block-cards-block-card + .block-list-appender {
 
 	button.block-editor-button-block-appender {
@@ -43,10 +45,6 @@
 
 	.card-settings-link {
 		transition: background-color 0.4s linear;
-
-		&.warn {
-			background-color: #ff0;
-		}
 	}
 
 	.card-image {

@@ -13,7 +13,7 @@ import ListEdit from './list/edit';
 import ListSave from './list/save';
 import './list/style.scss';
 
-import { CardIcon, CategoryIcon, ListIcon } from './icons';
+import { CardIcon, CategoryIcon, ListIcon } from './common/icons';
 
 import mapStyles from './common/mapStyles';
 
@@ -53,7 +53,7 @@ registerBlockType( 'cards-block/card', {
 			source: 'attribute',
 			selector: '.card-title a',
 			attribute: 'target',
-			default: '_self'
+			default: '_self',
 		},
 		imgSrc: {
 			type: 'string',
@@ -167,8 +167,8 @@ registerBlockType( 'cards-block/list', {
 			type: 'string',
 			source: 'html',
 			selector: '.map-style',
-			default: mapStyles[0]
-		}
+			default: mapStyles[ 0 ].value,
+		},
 	},
 	example: {
 		showSearch: 'true',

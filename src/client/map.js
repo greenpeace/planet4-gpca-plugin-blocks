@@ -1,9 +1,6 @@
 import mapboxgl from 'mapbox-gl';
 import Coordinates from 'coordinate-parser';
 
-import 'mapbox-gl/dist/mapbox-gl.css';
-import './map.css';
-
 const doc = window.document;
 const container = 'cards-list-map-element';
 window.MAP_loadedWith = null;
@@ -125,43 +122,38 @@ window.MAP_getMarkerBounds = ( cardCoords ) => {
 };
 
 window.MAP_loadMap = () => {
-	const apiKeyElement = doc.querySelector( '.map-api-key' );
-	if (!apiKeyElement) {
-		throw new Error('missing api key element');
-	}
-	const apiKey = apiKeyElement.innerText;
-	if (!apiKey) {
-		throw new Error('Missing Mapbox API key');
-	}
+	try {
+		const apiKeyElement = doc.querySelector( '.map-api-key' );
+		const apiKey = apiKeyElement.innerText;
+		if ( apiKey !== window.MAP_loadedWith ) {
+			mapboxgl.accessToken = apiKey;
+			const cardCoords = window.MAP_getCardCoordinates();
+			const fallback = 'mapbox://styles/mapbox/outdoors-v11';
+			const styleElement = doc.querySelector( '.map-style' );
+			const styleText = styleElement ? styleElement.innerText : false;
 
-	if ( apiKey !== window.MAP_loadedWith ) {
-		mapboxgl.accessToken = apiKey;
-
-		const cardCoords = window.MAP_getCardCoordinates();
-
-		const fallback = 'mapbox://styles/mapbox/outdoors-v11';
-		const styleElement = doc.querySelector('.map-style');
-		const styleText = styleElement ? styleElement.innerText : false;
-
-		map = new mapboxgl.Map( {
-			container,
-			style: styleText || fallback
-		} );
-		try {
-			map.fitBounds( window.MAP_getMarkerBounds( cardCoords ), {
-				padding: { top: 16, right: 16, bottom: 45, left: 16 }
+			map = new mapboxgl.Map( {
+				container,
+				style: styleText || fallback,
 			} );
-		} catch ( ex ) {
-			console.warn( ex );
+			try {
+				map.fitBounds( window.MAP_getMarkerBounds( cardCoords ), {
+					padding: { top: 16, right: 16, bottom: 45, left: 16 },
+				} );
+			} catch ( ex ) {
+				console.warn( '(ignoring) Auto-fitting exception', ex );
+			}
+			window.MAP_setMarkers( cardCoords );
+			window.MAP_loadedWith = mapboxgl.accessToken;
 		}
-		window.MAP_setMarkers( cardCoords );
-		window.MAP_loadedWith = mapboxgl.accessToken;
+	} catch ( ex ) {
+		console.warn( "Couldn't load map", ex );
 	}
 };
 
-window.MAP_setStyle = (style) => {
-  map.setStyle(style);
-}
+window.MAP_setStyle = ( style ) => {
+	map.setStyle( style );
+};
 
 window.MAP_autofit = () => {
 	const cardCoords = window.MAP_getCardCoordinates();

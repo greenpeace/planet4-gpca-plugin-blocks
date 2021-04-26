@@ -1,14 +1,21 @@
 import {
 	InspectorControls,
 	useBlockProps,
-	PlainText,
 	RichText,
 	MediaUpload,
 	MediaUploadCheck,
 } from '@wordpress/block-editor';
 import { withSelect } from '@wordpress/data';
-import { PanelBody, TabPanel, Button, CheckboxControl } from '@wordpress/components';
+import {
+	PanelBody,
+	TabPanel,
+	Button,
+	CheckboxControl,
+	TextControl,
+} from '@wordpress/components';
+import { useState, useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import Coordinates from 'coordinate-parser';
 import updater from '../common/updater';
 
 import './editor.scss';
@@ -16,6 +23,8 @@ import './editor.scss';
 const commonRichTextOptions = {
 	keepPlaceholderOnFocus: true,
 };
+
+const defaultCalculatedCoordinates = '';
 
 function Edit( {
 	attributes: {
@@ -34,8 +43,26 @@ function Edit( {
 	},
 	setAttributes,
 } ) {
+	const [ calculatedCoordinates, setCalculatedCoordinates ] = useState(
+		defaultCalculatedCoordinates
+	);
 	const imageUrl = imgSrc === 'lib' ? mediaUrl : imgUrl;
 	const updateAttribute = updater( setAttributes );
+
+	useEffect( () => {
+		if ( coordinates === '' ) {
+			setCalculatedCoordinates( defaultCalculatedCoordinates );
+		} else {
+			try {
+				const position = new Coordinates( coordinates );
+				setCalculatedCoordinates(
+					`${ position.getLatitude() }º Latitude ${ position.getLongitude() }º Longitude`
+				);
+			} catch ( ex ) {
+				setCalculatedCoordinates( ex.toString() );
+			}
+		}
+	}, [ coordinates ] );
 
 	return (
 		<div { ...useBlockProps() }>
@@ -48,29 +75,29 @@ function Edit( {
 						title={ __( 'Link', 'cards' ) }
 						initialOpen={ true }
 					>
-						<PlainText
-							type="string"
+						<TextControl
+							label={ __( 'URL', 'cards' ) }
 							value={ url }
 							onChange={ updateAttribute( 'url' ) }
-							placeholder={ __( 'URL', 'cards' ) }
 						/>
 						<CheckboxControl
-							label={__('Open in new tab', 'cards')}
+							label={ __( 'Open in new tab', 'cards' ) }
 							checked={ target === '_blank' }
-							onChange={(bool) => {
-							  return updateAttribute('target')(bool ? '_blank' : '_self');
-							}}
+							onChange={ ( bool ) => {
+								return updateAttribute( 'target' )(
+									bool ? '_blank' : '_self'
+								);
+							} }
 						/>
 					</PanelBody>
 					<PanelBody
 						title={ __( 'Image', 'cards' ) }
 						initialOpen={ true }
 					>
-						<PlainText
-							type="string"
+						<TextControl
+							label="alt"
 							value={ imgAlt }
 							onChange={ updateAttribute( 'imgAlt' ) }
-							placeholder={ 'alt' }
 						/>
 						<TabPanel
 							initialTabName={ imgSrc }
@@ -153,21 +180,22 @@ function Edit( {
 									title: __( 'Image URL', 'cards' ),
 									el: (
 										<>
-											<PlainText
-												type="url"
+											<TextControl
+												label={ __(
+													'Image URL',
+													'cards'
+												) }
 												value={ imgUrl }
 												onChange={ updateAttribute(
 													'imgUrl'
-												) }
-												placeholder={ __(
-													'Image URL',
-													'cards'
 												) }
 											/>
 											<div className="card-image">
 												<img
 													src={ imgUrl }
-													alt={ title || url }
+													alt={
+														imgAlt || title || url
+													}
 												/>
 											</div>
 										</>
@@ -184,12 +212,14 @@ function Edit( {
 						title={ __( 'Geolocation', 'cards' ) }
 						initialOpen={ false }
 					>
-						<PlainText
-							type="string"
+						<TextControl
+							label={ __( 'Coordinates (lat, lon)', 'cards' ) }
 							value={ coordinates }
 							onChange={ updateAttribute( 'coordinates' ) }
-							placeholder={ __( 'Coordinates', 'cards' ) }
 						/>
+						<span className="calculated-coordinates">
+							{ calculatedCoordinates }
+						</span>
 					</PanelBody>
 				</div>
 			</InspectorControls>
@@ -200,8 +230,13 @@ function Edit( {
 					</div>
 				) }
 				<div className="card-title">
-					<a className="card-url" href={ url } target={target} rel="noopener noreferrer">
-						{ title || url}
+					<a
+						className="card-url"
+						href={ url }
+						target={ target }
+						rel="noopener noreferrer"
+					>
+						{ title || url }
 					</a>
 					<RichText
 						tagName="strong"

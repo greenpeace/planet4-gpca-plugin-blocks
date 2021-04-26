@@ -8,7 +8,7 @@ export default function save( {
 	return (
 		<div { ...useBlockProps.save() }>
 			<Search show={ showSearch } />
-			<Map show={ showMap } apiKey={ mapApiKey } style={mapStyle} />
+			<Map show={ showMap } apiKey={ mapApiKey } style={ mapStyle } />
 			<InnerBlocks.Content />
 		</div>
 	);

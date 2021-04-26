@@ -1,5 +1,6 @@
 import debounce from 'javascript-debounce';
 import MiniSearch from 'minisearch';
+import whenReady from '../common/whenReady';
 
 const searchBoxSelector = '.cards-list-search-controls';
 const searchResultsSelector = '.cards-list-search-results';
@@ -16,7 +17,7 @@ if ( ! String.prototype.trim ) {
 	};
 }
 
-function init() {
+function go() {
 	const doc = window.document;
 	searchBox = doc.querySelector( searchBoxSelector );
 	if ( searchBox ) {
@@ -233,4 +234,8 @@ function makeImgClickable( card ) {
 	}
 }
 
-export default { init };
+export default {
+	init: () => {
+		whenReady( searchBoxSelector, go );
+	},
+};
