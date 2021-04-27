@@ -217,9 +217,9 @@ function Edit( {
 							value={ coordinates }
 							onChange={ updateAttribute( 'coordinates' ) }
 						/>
-						<span className="calculated-coordinates">
+						<p className="calculated-coordinates">
 							{ calculatedCoordinates }
-						</span>
+						</p>
 					</PanelBody>
 				</div>
 			</InspectorControls>
