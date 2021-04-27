@@ -10,6 +10,7 @@
 		padding: 16px 44px 16px 16px;
 		border-radius: 4px;
 		font-weight: 500;
+		font-size: 1.25rem;
 		line-height: 1;
 		border: 1px solid #074365;
 
@@ -18,7 +19,9 @@
 		}
 
 		&::after {
-			content: ">";
+			content: '';
+			width: 1em;
+			height: 1em;
 			position: absolute;
 			top: 16px;
 			right: 16px;
@@ -28,6 +31,10 @@
 			transition: transform 0.8s ease;
 			transform-origin: center center;
 			transform: rotate(90deg);
+			background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 512'%3e%3cpath d='M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z' fill='%23fff' /%3e%3c/svg%3e");
+			background-size: 0.5em;
+			background-position: center center;
+			background-repeat: no-repeat;
 		}
 
 		&.opened::after {
