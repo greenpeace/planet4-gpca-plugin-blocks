@@ -74,3 +74,11 @@ function p4_child_theme_gpca_whitelist_blocks( $allowed_blocks, $post ) {
 
 add_action( 'init', 'cards_block_cards_block_init' );
 add_filter('allowed_block_types', 'p4_child_theme_gpca_whitelist_blocks', 11, 2);
+
+add_action( 'wp_headers', static function ( $headers ): array {
+	if ( empty( $headers['Content-Security-Policy'] ) ) {
+		return $headers;
+	}
+	$headers['Content-Security-Policy'] .= '; worker-src blob: ; child-src blob: ; img-src data: blob: ';
+	return $headers;
+}, 11, 1);
