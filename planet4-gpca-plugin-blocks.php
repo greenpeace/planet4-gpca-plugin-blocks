@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Cards
  * Description:     Cards with clickable title, description, image, and more
- * Version:         0.2.6
+ * Version:         0.2.7
  * Author:          Shawn Inder &lt;shawninder@gmail.com&gt;
  * License:         GPL-3.0-or-later
  * License URI:     http://www.gnu.org/licenses/gpl-3.0.html
