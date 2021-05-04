@@ -1,6 +1,6 @@
 {
 	"name": "planet4-gpca-plugin-blocks",
-	"version": "0.2.10",
+	"version": "0.2.11",
 	"description": "Cards with clickable title, description, image, and more",
 	"author": "Shawn Inder <shawninder@gmail.com>",
 	"license": "GPL-3.0-or-later",
