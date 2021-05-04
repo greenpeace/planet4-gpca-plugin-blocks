@@ -79,6 +79,6 @@ add_action( 'wp_headers', static function ( $headers ): array {
 	if ( empty( $headers['Content-Security-Policy'] ) ) {
 		return $headers;
 	}
-	$headers['Content-Security-Policy'] .= '; worker-src blob: ; child-src blob: ; img-src data: blob: http: https: ';
+	$headers['Content-Security-Policy'] .= '; worker-src blob: ; child-src * blob: ; img-src data: blob: http: https: ';
 	return $headers;
 }, 11, 1);
