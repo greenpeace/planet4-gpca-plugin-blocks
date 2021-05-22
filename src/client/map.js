@@ -138,8 +138,8 @@ window.MAP_loadMap = () => {
 			map = new mapboxgl.Map( {
 				container,
 				style: styleText || fallback,
-				center: [-96, 58],
-				zoom: 3
+				center: [ -96, 58 ],
+				zoom: 3,
 			} );
 			try {
 				map.fitBounds( window.MAP_getMarkerBounds( cardCoords ), {
@@ -167,12 +167,12 @@ window.MAP_autofit = () => {
 	} );
 };
 
-function go () {
+function go() {
 	window.MAP_loadMap();
 }
 
 export default {
 	init: () => {
-	  whenReady(`#${ container }`, go);
-	}
+		whenReady( `#${ container }`, go );
+	},
 };

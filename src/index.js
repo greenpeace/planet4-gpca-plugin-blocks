@@ -132,8 +132,8 @@ registerBlockType( 'cards-block/category', {
 			type: 'string',
 			source: 'html',
 			selector: '.starts-closed',
-			default: 'false'
-		}
+			default: 'false',
+		},
 	},
 } );
 

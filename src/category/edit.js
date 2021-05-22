@@ -2,12 +2,9 @@ import {
 	InspectorControls,
 	InnerBlocks,
 	useBlockProps,
-	RichText
+	RichText,
 } from '@wordpress/block-editor';
-import {
-	PanelBody,
-	CheckboxControl
-} from '@wordpress/components';
+import { PanelBody, CheckboxControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import updater from '../common/updater';
 
@@ -17,7 +14,7 @@ const ALLOWED_BLOCKS = [ 'cards-block/card' ];
 
 export default function Edit( {
 	attributes: { title, startsClosed },
-	setAttributes
+	setAttributes,
 } ) {
 	const updateAttribute = updater( setAttributes );
 	return (
@@ -25,8 +22,8 @@ export default function Edit( {
 			<InspectorControls>
 				<div className="cards-category-settings">
 					<PanelBody
-						title={ __('Initial State', 'cards') }
-						initialOpen={true}
+						title={ __( 'Initial State', 'cards' ) }
+						initialOpen={ true }
 					>
 						<CheckboxControl
 							label={ __( 'Starts closed', 'cards' ) }
@@ -41,7 +38,9 @@ export default function Edit( {
 				</div>
 			</InspectorControls>
 			<RichText
-				className={`category-title${startsClosed === 'true' ? '' : ' opened'}`}
+				className={ `category-title${
+					startsClosed === 'true' ? '' : ' opened'
+				}` }
 				tagName="h2"
 				value={ title }
 				onChange={ ( newTitle ) => {
@@ -51,7 +50,11 @@ export default function Edit( {
 				placeholder={ __( 'Category Title', 'category' ) }
 				keepPlaceholderOnFocus={ true }
 			/>
-			<div className={`cards-list-category-contents${startsClosed === 'true' ? ' is-hidden' : ''}`}>
+			<div
+				className={ `cards-list-category-contents${
+					startsClosed === 'true' ? ' is-hidden' : ''
+				}` }
+			>
 				<InnerBlocks
 					allowedBlocks={ ALLOWED_BLOCKS }
 					orientation="vertical"
