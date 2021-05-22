@@ -128,6 +128,12 @@ registerBlockType( 'cards-block/category', {
 			source: 'text',
 			selector: '.category-title',
 		},
+		startsClosed: {
+			type: 'string',
+			source: 'html',
+			selector: '.starts-closed',
+			default: 'false'
+		}
 	},
 } );
 
