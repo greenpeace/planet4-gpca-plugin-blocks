@@ -29,6 +29,8 @@ Things may behave differently in your Wordpress installation due to conflicting 
 
 - Requires Wordpress >=  5.6.0 (tested up to 5.6.0)
 - Requires PHP >= 7.0.0
+- Requires Docker to be running
+
 1. Clone or fork this repo
 2. install dependencies: `npm install && npm install -g @wordpress/env`
 3. build (and automatically rebuild when files change): `npm start`
