@@ -1,11 +1,14 @@
 import mapboxgl from 'mapbox-gl';
 import Coordinates from 'coordinate-parser';
 
+import whenReady from '../common/whenReady';
+
 const doc = window.document;
 const container = 'cards-list-map-element';
-window.MAP_loadedWith = null;
 let map = null;
 let markers = [];
+
+window.MAP_loadedWith = null;
 
 window.MAP_clearMarkers = () => {
 	markers.forEach( ( marker ) => {
@@ -164,11 +167,12 @@ window.MAP_autofit = () => {
 	} );
 };
 
-function init() {
-	const mapEl = doc.querySelector( `#${ container }` );
-	if ( mapEl ) {
-		window.MAP_loadMap();
-	}
+function go () {
+	window.MAP_loadMap();
 }
 
-export default { init };
+export default {
+	init: () => {
+	  whenReady(`#${ container }`, go);
+	}
+};
