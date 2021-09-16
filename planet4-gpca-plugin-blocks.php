@@ -39,14 +39,6 @@ function cards_block_cards_block_init() {
 		filemtime( "$dir/$editor_style" )
 	);
 
-	$script = 'build/client.js';
-	wp_register_script(
-		'cards-block-card-block',
-		plugins_url( $script, __FILE__ ),
-		array(),
-		filemtime( "$dir/$script" )
-	);
-
 	$style = 'build/style-index.css';
 	wp_register_style(
 		'cards-block-card-block',
@@ -61,10 +53,23 @@ function cards_block_cards_block_init() {
 			'editor_script' => 'cards-block-card-block-editor',
 			'editor_style'  => 'cards-block-card-block-editor',
 			'style'         => 'cards-block-card-block',
-			'script'				=> 'cards-block-card-block'
 		)
 	);
 }
+add_action(
+	'wp_enqueue_scripts',
+	static function () {
+		if ( has_block( 'cards-block/card' ) ) {
+			wp_enqueue_script(
+				'cards-block-card-block',
+				plugins_url( 'build/client.js', __FILE__ ),
+				[],
+				'0.1.0',
+				true
+			);
+		}
+	}
+);
 
 function p4_child_theme_gpca_whitelist_blocks( $allowed_blocks, $post ) {
 	$allowed = is_array($allowed_blocks) ? $allowed_blocks : array();
